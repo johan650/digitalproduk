@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Form Upload Produk</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
-    </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload Bukti Transfer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -19,263 +15,263 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 1.5rem;
     }
-    main {
+
+    .card {
       background: white;
-      border-radius: 2rem;
-      box-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.25);
-      max-width: 480px;
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       width: 100%;
-      padding: 3rem 2.5rem 3rem 2.5rem;
+      max-width: 420px;
+      padding: 2.5rem 2rem 3rem;
       position: relative;
       overflow: hidden;
+      animation: fadeInUp 0.8s ease forwards;
     }
+
     h1 {
-      color: #2563eb;
-      font-weight: 700;
-      font-size: 2.25rem;
+      font-weight: 600;
+      font-size: 1.75rem;
+      color: #4b4b4b;
+      margin-bottom: 1.75rem;
       text-align: center;
-      margin-bottom: 2rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       user-select: none;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
+
+    label {
+      font-weight: 600;
+      color: #555;
+      display: block;
+      margin-bottom: 0.5rem;
+      user-select: none;
     }
-    .input-group {
-      position: relative;
-    }
-    input[type="text"],
-    input[type="tel"],
-    select,
+
     input[type="file"] {
       width: 100%;
-      border: 2.5px solid #cbd5e1;
+      padding: 0.75rem 1rem;
       border-radius: 0.75rem;
-      padding: 1.1rem 1.25rem 1.1rem 1.25rem;
+      border: 2px solid #ddd;
       font-size: 1rem;
-      background: transparent;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      color: #1e293b;
-      font-weight: 500;
+      color: #444;
       cursor: pointer;
+      transition: border-color 0.3s ease;
+      background-color: #fafafa;
+      box-shadow: inset 0 2px 5px rgb(0 0 0 / 0.05);
     }
-    input[type="file"] {
-      padding: 0.5rem 1.25rem;
-      cursor: pointer;
-    }
-    input[type="text"]:focus,
-    input[type="tel"]:focus,
-    select:focus,
+
     input[type="file"]:focus {
       outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.4);
-      background: #f0f9ff;
+      border-color: #667eea;
+      box-shadow: 0 0 8px #667eea;
+      background-color: #fff;
     }
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image:
-        url("data:image/svg+xml,%3csvg fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 1.25rem 1.25rem;
-      cursor: pointer;
+
+    #fileName {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+      min-height: 1.25rem;
+      font-style: italic;
+      user-select: text;
     }
-    label {
-      position: absolute;
-      top: 50%;
-      left: 1.25rem;
-      transform: translateY(-50%);
-      color: #94a3b8;
-      font-weight: 500;
-      pointer-events: none;
-      transition: all 0.3s ease;
-      background: white;
-      padding: 0 0.3rem;
-      user-select: none;
-    }
-    input:not(:placeholder-shown) + label,
-    input:focus + label,
-    select:not([value=""]) + label,
-    select:focus + label {
-      top: -0.6rem;
-      left: 1rem;
-      font-size: 0.75rem;
-      color: #3b82f6;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-    input[type="file"] + label {
-      display: none;
-    }
-    button[type="submit"] {
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
+
+    /* Enhanced button styles */
+    button {
+      margin-top: 2.5rem;
+      background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
       color: white;
       font-weight: 700;
-      font-size: 1.125rem;
-      padding: 1rem 0;
-      border-radius: 1.25rem;
+      font-size: 1.15rem;
+      padding: 0.9rem 0;
+      border-radius: 2rem;
       border: none;
       cursor: pointer;
-      box-shadow: 0 8px 15px rgba(59, 130, 246, 0.4);
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 0.75rem;
-      transition: all 0.3s ease;
+      align-items: center;
+      gap: 1rem;
+      box-shadow:
+        0 4px 15px rgba(37, 211, 102, 0.6),
+        0 0 10px rgba(37, 211, 102, 0.8);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       user-select: none;
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
+      perspective: 1000px;
     }
-    button[type="submit"]:hover {
-      background: linear-gradient(135deg, #1e40af, #2563eb);
-      box-shadow: 0 12px 20px rgba(37, 99, 235, 0.6);
-      transform: translateY(-3px);
-    }
-    button[type="submit"]:active {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 10px rgba(37, 99, 235, 0.5);
-    }
-    button[type="submit"]:disabled {
-      background: #93c5fd;
-      cursor: not-allowed;
+
+    button:disabled {
+      background: #a3d9b1;
       box-shadow: none;
+      cursor: not-allowed;
       transform: none;
+      color: #e6f4ea;
     }
-    /* Pulse animation */
-    @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-      }
-      50% {
-        box-shadow: 0 0 15px 8px rgba(59, 130, 246, 0.4);
-      }
+
+    button:not(:disabled):hover {
+      background: linear-gradient(90deg, #128c7e 0%, #25d366 100%);
+      box-shadow:
+        0 6px 20px rgba(37, 211, 102, 0.8),
+        0 0 15px rgba(37, 211, 102, 1);
+      transform: translateY(-4px) scale(1.07);
     }
-    .pulse {
-      animation: pulse-glow 2.5s infinite;
+
+    button:not(:disabled):active {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow:
+        0 3px 10px rgba(37, 211, 102, 0.7),
+        0 0 8px rgba(37, 211, 102, 0.9);
     }
-    /* Modal styles */
-    #modalOverlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
-      padding: 1rem;
+
+    button i {
+      font-size: 1.5rem;
+      animation: pulseIcon 1.8s infinite ease-in-out;
+      filter: drop-shadow(0 0 3px rgba(37, 211, 102, 0.7));
+      transform-origin: center;
     }
-    #modalOverlay.active {
-      display: flex;
-      animation: modalFadeIn 0.4s ease forwards;
-    }
-    @keyframes modalFadeIn {
-      from {
+
+    @keyframes fadeInUp {
+      0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
-      to {
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    #modalContent {
-      background: white;
-      border-radius: 1.5rem;
-      max-width: 420px;
-      width: 100%;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.3);
-      text-align: center;
-      user-select: none;
-      position: relative;
+
+    @keyframes pulseIcon {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 3px rgba(37, 211, 102, 0.7));
+      }
+      50% {
+        transform: scale(1.3);
+        filter: drop-shadow(0 0 8px rgba(37, 211, 102, 1));
+      }
     }
-    #modalContent p {
-      font-size: 1.125rem;
-      color: #1e293b;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-      font-weight: 600;
+
+    /* Custom file input icon */
+    input[type="file"]::-webkit-file-upload-button {
+      visibility: hidden;
     }
-    #modalContent button {
-      background: #2563eb;
+    input[type="file"]::before {
+      content: 'Pilih File';
+      display: inline-block;
+      background: #667eea;
       color: white;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.75rem 2rem;
-      border-radius: 1rem;
-      border: none;
+      border-radius: 0.75rem;
+      padding: 0.6rem 1.2rem;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
       cursor: pointer;
-      box-shadow: 0 8px 15px rgba(37, 99, 235, 0.5);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+      transition: background-color 0.3s ease;
+      margin-right: 0.5rem;
     }
-    #modalContent button:hover {
-      background: #1e40af;
-      box-shadow: 0 12px 20px rgba(30, 64, 175, 0.7);
+    input[type="file"]:hover::before {
+      background: #5a6edc;
     }
-    #modalContent button:active {
-      background: #1e3aaf;
-      box-shadow: 0 6px 10px rgba(30, 58, 175, 0.6);
+    input[type="file"]:active::before {
+      background: #4a5bbd;
     }
-    /* Responsive */
+
     @media (max-width: 480px) {
-      main {
-        padding: 2rem 1.5rem 2rem 1.5rem;
+      .card {
+        padding: 2rem 1.5rem 2.5rem;
       }
       h1 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.75rem 0;
+        gap: 0.75rem;
+      }
+      button i {
+        font-size: 1.25rem;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Upload Produk</h1>
-    <form action="send.php" method="POST" enctype="multipart/form-data">
-      <div class="input-group">
-        <input type="text" name="nama" placeholder=" " required />
-        <label>Nama</label>
-      </div>
-      <div class="input-group">
-        <input type="text" name="no_hp" placeholder=" " required />
-        <label>No Handphone</label>
-      </div>
-      <div class="input-group">
-        <input type="text" name="produk" placeholder=" " required />
-        <label>Nama Produk</label>
-      </div>
-      <div class="input-group">
-        <input type="file" name="gambar" accept=".jpg,.jpeg,.png" required />
-      </div>
-      <button type="submit" class="pulse">
-        <i class="fas fa-paper-plane"></i> Kirim Data
+  <main class="card" role="main" aria-label="Form upload bukti transfer">
+    <h1>Upload Bukti Transfer</h1>
+    <form id="uploadForm" class="flex flex-col" enctype="multipart/form-data" novalidate>
+      <label for="fileInput">Pilih file bukti transfer (jpg, png, pdf)</label>
+      <input
+        type="file"
+        id="fileInput"
+        name="buktiTransfer"
+        accept=".jpg,.jpeg,.png,.pdf"
+        required
+        aria-describedby="fileName"
+      />
+      <p id="fileName" aria-live="polite" aria-atomic="true"></p>
+
+      <button
+        type="submit"
+        id="sendBtn"
+        disabled
+        aria-disabled="true"
+        aria-label="Kirim bukti transfer via WhatsApp"
+      >
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> Kirim Bukti via WhatsApp
       </button>
     </form>
   </main>
 
-  <div id="modalOverlay">
-    <div id="modalContent">
-      <p>Data berhasil dikirim!</p>
-      <button onclick="document.getElementById('modalOverlay').classList.remove('active')">Tutup</button>
-    </div>
-  </div>
-
   <script>
-    if (window.location.search.includes("success.html")) {
-      document.getElementById("modalOverlay").classList.add("active");
-    }
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileName');
+    const sendBtn = document.getElementById('sendBtn');
+    const uploadForm = document.getElementById('uploadForm');
+
+    // Nomor WhatsApp tujuan (gunakan format internasional tanpa tanda +, contoh: 6283173432826)
+    const whatsappNumber = '6283173432826';
+
+    // Website name for message
+    const websiteName = 'web https://jhnzdigitalproduk.vercel.app';
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        fileNameDisplay.textContent = `File terpilih: ${fileInput.files[0].name}`;
+        sendBtn.disabled = false;
+        sendBtn.setAttribute('aria-disabled', 'false');
+      } else {
+        fileNameDisplay.textContent = '';
+        sendBtn.disabled = true;
+        sendBtn.setAttribute('aria-disabled', 'true');
+      }
+    });
+
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (fileInput.files.length === 0) {
+        alert('Silakan pilih file bukti transfer terlebih dahulu.');
+        return;
+      }
+
+      const message = encodeURIComponent(
+        `Saya ingin mengirim bukti transfer atas pembelian saya di ${websiteName}.`
+      );
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    });
   </script>
 </body>
 </html>
