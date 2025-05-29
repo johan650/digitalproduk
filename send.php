@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $body .= "--".$uid."--";
 
     if (mail($to, $subject, $body, $headers)) {
-      header("Location: success.php");
+      header("Location: success.html");
     } else {
       echo "Gagal mengirim email.";
     }
