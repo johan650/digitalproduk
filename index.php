@@ -1,0 +1,792 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Jhnz Produk Hosting
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Pulse animation for CTA buttons */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 10px rgba(59, 130, 246, 0);
+      }
+    }
+    .animate-pulse-cta {
+      animation: pulse 2s infinite;
+    }
+    /* Shake animation for CTA buttons */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+    .animate-shake-cta {
+      animation: shake 0.8s infinite;
+    }
+    /* Micro animation for buttons and icons */
+    .btn-micro-animate:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease-in-out;
+    }
+    .icon-micro-animate:hover {
+      color: #2563eb;
+      transition: color 0.3s ease-in-out;
+      transform: rotate(15deg);
+    }
+    /* Smooth fade-in for product grid */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation-fill-mode: forwards;
+      animation-name: fadeInUp;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Parallax scrolling for hero image */
+    .parallax {
+      transform-style: preserve-3d;
+      perspective: 1px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 100vh;
+    }
+    .parallax__layer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform-origin: center;
+    }
+    .parallax__layer--base {
+      transform: translateZ(0);
+      z-index: 2;
+      position: relative;
+    }
+    .parallax__layer--back {
+      transform: translateZ(-1px) scale(2);
+      z-index: 1;
+    }
+    /* Slide-in text banner */
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-100%);
+      animation-fill-mode: forwards;
+      animation-name: slideInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      animation-delay: 0.3s;
+    }
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-800">
+  <header class="fixed w-full bg-white shadow-md z-30">
+   <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a class="text-2xl font-bold text-blue-600 select-none" href="#">
+     Produk Hosting Jhnz
+    </a>
+    <ul class="hidden md:flex space-x-8 font-semibold text-gray-700">
+     <li>
+      <a class="hover:text-blue-600 transition" href="#produk1">
+       Produk 1
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-blue-600 transition" href="#produk2">
+       Produk 2
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-blue-600 transition" href="#produk3">
+       Produk 3
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-blue-600 transition" href="#produk4">
+       Produk 4
+      </a>
+     </li>
+     <li>
+      <a class="hover:text-blue-600 transition" href="#keuntungan">
+       Keuntungan
+      </a>
+     </li>
+    </ul>
+    <button aria-label="Toggle menu" class="md:hidden focus:outline-none" id="menu-btn">
+     <i class="fas fa-bars text-2xl text-gray-700">
+     </i>
+    </button>
+   </nav>
+   <div class="hidden md:hidden bg-white shadow-md" id="mobile-menu">
+    <ul class="flex flex-col p-4 space-y-3 font-semibold text-gray-700">
+     <li>
+      <a class="block hover:text-blue-600 transition" href="#produk1">
+       Produk 1
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-blue-600 transition" href="#produk2">
+       Produk 2
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-blue-600 transition" href="#produk3">
+       Produk 3
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-blue-600 transition" href="#produk4">
+       Produk 4
+      </a>
+     </li>
+     <li>
+      <a class="block hover:text-blue-600 transition" href="#keuntungan">
+       Keuntungan
+      </a>
+     </li>
+    </ul>
+   </div>
+  </header>
+  <main class="pt-20">
+   <!-- Hero Section with Parallax -->
+   <section class="relative h-screen overflow-hidden parallax bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex flex-col justify-center items-center px-6 text-center">
+    <img alt="Ilustrasi server cloud digital dengan latar belakang biru dan ungu gradasi, menampilkan server modern dan awan digital" class="parallax__layer parallax__layer--back absolute inset-0 w-full h-full object-cover opacity-30" height="800" loading="lazy" src="https://storage.googleapis.com/a1aa/image/51dbd845-ae6d-4dd3-2361-ab4d7cdc0bf8.jpg" width="1200"/>
+    <div class="parallax__layer parallax__layer--base max-w-4xl space-y-6">
+     <h1 class="text-5xl md:text-6xl font-extrabold slide-in-left">
+      Solusi Hosting Terbaik untuk Bisnis Anda
+     </h1>
+     <p class="text-lg md:text-xl max-w-3xl mx-auto slide-in-left" style="animation-delay: 0.6s;">
+      Dapatkan layanan VPS, Cpanel, AWS, dan Panel Run Bot dengan harga terjangkau dan kualitas terbaik.
+     </p>
+     <a class="inline-block mt-6 px-8 py-4 bg-blue-500 rounded-lg text-white font-semibold shadow-lg animate-pulse-cta btn-micro-animate hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition" href="#produk1">
+      Lihat Produk
+      <i class="fas fa-arrow-right ml-3 icon-micro-animate">
+      </i>
+     </a>
+    </div>
+   </section>
+   <!-- Produk 1 Section -->
+   <section class="max-w-7xl mx-auto px-6 py-16" id="produk1">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 fade-in" style="animation-delay: 0.1s;">
+     VPS DIGITAL OCEAN
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.2s;">
+      <img alt="Ilustrasi server VPS Digital Ocean RAM 2 CORE 1" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/949a60c6-47dc-48ce-bf4e-55054e3e1aba.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-blue-600">
+       RAM 2 CORE 1
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 20k/bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.3s;">
+      <img alt="Ilustrasi server VPS Digital Ocean RAM 2 CORE 2" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e9a654e9-8688-48b6-07bf-aaf2ef5e6817.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-blue-600">
+       RAM 2 CORE 2
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 25k/bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.4s;">
+      <img alt="Ilustrasi server VPS Digital Ocean RAM 4 CORE 2" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0c5d5377-be52-4e13-df79-e8e3d3485182.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-blue-600">
+       RAM 4 CORE 2
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 40k/bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.5s;">
+      <img alt="Ilustrasi server VPS Digital Ocean RAM 8 CORE 4" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/ede7d8b6-2456-4051-fca7-7e8069b34efc.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-blue-600">
+       RAM 8 CORE 4
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 50k/bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.6s;">
+      <img alt="Ilustrasi server VPS Digital Ocean RAM 16 CORE 4" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/28531c55-3000-410f-7c07-151ce899ec3c.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-blue-600">
+       RAM 16 CORE 4
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 70k/bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+    </div>
+    <div class="mt-10 max-w-xl mx-auto bg-blue-50 rounded-lg p-6 text-center fade-in" style="animation-delay: 0.7s;">
+     <h3 class="text-xl font-semibold mb-3 text-blue-700">
+      Keuntungan Beli VPS
+     </h3>
+     <ul class="list-disc list-inside text-blue-700 space-y-1 text-lg">
+      <li>
+       FREE REQUEST OS
+      </li>
+      <li>
+       FREE REQUEST REGION
+      </li>
+      <li>
+       FREE REQUEST VERSI
+      </li>
+     </ul>
+    </div>
+   </section>
+   <!-- Produk 2 Section -->
+   <section class="max-w-7xl mx-auto px-6 py-16" id="produk2">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 fade-in" style="animation-delay: 0.1s;">
+     Produk 2 - Cpanel &amp; WHM
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.2s;">
+      <img alt="Ilustrasi panel kontrol hosting Cpanel" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/09b29102-d4c6-4f50-27e4-af218c18b6bd.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       Cpanel
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 5K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.3s;">
+      <img alt="Ilustrasi panel kontrol hosting WHM MINI" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/8e4ab258-c257-4403-4fc2-4c05b32a42a8.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       WHM MINI
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 15K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.4s;">
+      <img alt="Ilustrasi panel kontrol hosting WHM MEDIUM" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/2bd4570a-9305-40bd-c0f1-8da8a18e5499.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       WHM MEDIUM
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 20K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.5s;">
+      <img alt="Ilustrasi panel kontrol hosting WHM EXTRA" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4bc05448-52aa-4742-babc-3a059c72a8dc.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       WHM EXTRA
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 30K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.6s;">
+      <img alt="Ilustrasi panel kontrol hosting WHM SUPER" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/88fe614c-4b54-43d8-5479-962309c51a86.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       WHM SUPER
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 40K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.7s;">
+      <img alt="Ilustrasi panel kontrol hosting MWHM MINI" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/05b15ac3-3d2e-450c-ad97-dbca84b60c55.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       MWHM MINI
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 35K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.8s;">
+      <img alt="Ilustrasi panel kontrol hosting MWHM MEDIUM" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c8c6ca79-c762-4ec5-acf6-148992f8d7af.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       MWHM MEDIUM
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 40K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.9s;">
+      <img alt="Ilustrasi panel kontrol hosting MWHM EXTRA" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/1201b3af-f7c1-4868-2a54-378652959701.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       MWHM EXTRA
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 45K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 1s;">
+      <img alt="Ilustrasi panel kontrol hosting MWHM SUPER" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/6c8043c8-c94c-42ff-4e16-05e09197f0c0.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-orange-500">
+       MWHM SUPER
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 50K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-orange-500 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+    </div>
+    <div class="mt-10 max-w-xl mx-auto bg-orange-50 rounded-lg p-6 text-center fade-in" style="animation-delay: 1.1s;">
+     <h3 class="text-xl font-semibold mb-3 text-orange-600">
+      Keuntungan Membeli WHM &amp; Cpanel
+     </h3>
+     <ul class="list-disc list-inside text-orange-600 space-y-1 text-lg">
+      <li>
+       ⚡ Auto Gembok ijo
+      </li>
+      <li>
+       ⚡ Server Private
+      </li>
+      <li>
+       ⚡ No Delay
+      </li>
+      <li>
+       ⚡ Support All Script
+      </li>
+     </ul>
+    </div>
+   </section>
+   <!-- Produk 3 Section -->
+   <section class="max-w-7xl mx-auto px-6 py-16" id="produk3">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 fade-in" style="animation-delay: 0.1s;">
+     Produk 3 - AWS Cloud Server
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.2s;">
+      <img alt="Ilustrasi server AWS 8CORE" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/f91b4744-0f4f-43fa-1e9b-ae0f90fa36ee.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-green-600">
+       AWS 8CORE
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 30K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-green-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.3s;">
+      <img alt="Ilustrasi server AWS 32CORE" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/f14e8373-580c-4a0e-18e5-7be2803e9bd5.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-green-600">
+       AWS 32CORE
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 65K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-green-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.4s;">
+      <img alt="Ilustrasi server AWS 64CORE" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/b8191763-1302-497b-5b50-ef179fe2d4c0.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-green-600">
+       AWS 64CORE
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 120K
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-green-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+    </div>
+    <div class="mt-10 max-w-xl mx-auto bg-green-50 rounded-lg p-6 text-center fade-in" style="animation-delay: 0.5s;">
+     <h3 class="text-xl font-semibold mb-3 text-green-700">
+      VCC untuk Trial Cloud
+     </h3>
+     <a href="beli.php" class="inline-block mt-3 px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition" role="button" tabindex="0">
+      Beli Sekarang
+      <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+      </i>
+     </a>
+    </div>
+   </section>
+   <!-- Produk 4 Section -->
+   <section class="max-w-7xl mx-auto px-6 py-16" id="produk4">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 fade-in" style="animation-delay: 0.1s;">
+     Produk 4 - Panel Run Bot
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.2s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 1GB CPU 40%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/23296cd9-2633-4b0f-d29c-579c82233b99.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 1GB CPU 40%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 3K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.3s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 2GB CPU 50%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c97feb81-082a-4ba2-f463-399558adc797.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 2GB CPU 50%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 5K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.4s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 3GB CPU 80%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0b9eb23d-725f-446a-c1d3-5fc0d70a2fbb.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 3GB CPU 80%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 6K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.5s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 4GB CPU 110%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/9020b116-6535-45fd-97c0-abf623bc5cb6.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 4GB CPU 110%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 7K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.6s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 5GB CPU 130%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e2a7e21d-292a-47d8-8e8f-c5a488a35b6c.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 5GB CPU 130%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 8K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.7s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 6GB CPU 150%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0b71f566-990d-4acb-0e11-214951c2f992.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 6GB CPU 150%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 9K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.8s;">
+      <img alt="Ilustrasi Panel Run Bot RAM 7GB CPU 180%" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/7daec4cb-b672-407e-d52a-2d612d84e408.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM 7GB CPU 180%
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 10K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+     <article class="bg-white rounded-xl shadow-md p-6 fade-in" style="animation-delay: 0.9s;">
+      <img alt="Ilustrasi Panel Run Bot RAM UNLIMITED CPU UNLIMITED" class="rounded-md mb-4 w-full object-cover h-48" height="250" loading="lazy" src="https://storage.googleapis.com/a1aa/image/7bd5c7b8-d58e-4891-0959-79178ccd3637.jpg" width="400"/>
+      <h3 class="text-xl font-semibold mb-3 text-purple-600">
+       RAM UNLIMITED CPU UNLIMITED
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Harga: 12K/Bulan
+      </p>
+      <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+       Beli Sekarang
+       <i class="fas fa-shopping-cart ml-3 icon-micro-animate">
+       </i>
+      </a>
+     </article>
+    </div>
+    <div class="mt-10 max-w-xl mx-auto bg-purple-50 rounded-lg p-6 text-center fade-in" style="animation-delay: 1s;">
+     <h3 class="text-xl font-semibold mb-3 text-purple-700">
+      Panel Lainnya
+     </h3>
+     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-md mx-auto">
+      <div class="bg-white rounded-lg p-4 shadow-md">
+       <h4 class="font-semibold text-purple-600 mb-2">
+        ADMIN PANEL
+       </h4>
+       <p class="text-gray-700 mb-3">
+        Harga: 15K
+       </p>
+       <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-2 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+        Beli Sekarang
+        <i class="fas fa-shopping-cart ml-2 icon-micro-animate">
+        </i>
+       </a>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow-md">
+       <h4 class="font-semibold text-purple-600 mb-2">
+        PT ADMIN PANEL
+       </h4>
+       <p class="text-gray-700 mb-3">
+        Harga: 20K
+       </p>
+       <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-2 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+        Beli Sekarang
+        <i class="fas fa-shopping-cart ml-2 icon-micro-animate">
+        </i>
+       </a>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow-md">
+       <h4 class="font-semibold text-purple-600 mb-2">
+        RESELLER PANEL
+       </h4>
+       <p class="text-gray-700 mb-3">
+        Harga: 15K
+       </p>
+       <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-2 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+        Beli Sekarang
+        <i class="fas fa-shopping-cart ml-2 icon-micro-animate">
+        </i>
+       </a>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow-md">
+       <h4 class="font-semibold text-purple-600 mb-2">
+        PANEL PRIVAT
+       </h4>
+       <p class="text-gray-700 mb-3">
+        Harga: 20K
+       </p>
+       <a href="beli.php" class="block w-full text-center bg-purple-600 text-white font-semibold py-2 rounded-lg shadow-lg animate-pulse-cta btn-micro-animate hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-300 transition" role="button" tabindex="0">
+        Beli Sekarang
+        <i class="fas fa-shopping-cart ml-2 icon-micro-animate">
+        </i>
+       </a>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Keuntungan Section -->
+   <section class="bg-white py-16 px-6" id="keuntungan">
+    <div class="max-w-4xl mx-auto text-center fade-in" style="animation-delay: 0.6s;">
+     <h2 class="text-4xl font-bold mb-8 text-gray-900">
+      Keuntungan Membeli Produk di Store Kami
+     </h2>
+     <ul class="text-gray-700 text-lg space-y-4 max-w-xl mx-auto">
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-server text-blue-600 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ SERVER TERJAGA
+       </span>
+      </li>
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-certificate text-green-600 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ PRODUK BERKUALITAS
+       </span>
+      </li>
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-tags text-orange-500 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ HARGA TERJANGKAU
+       </span>
+      </li>
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-shield-alt text-purple-600 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ FULL GARANSI 15 DAY 1X CLAIM
+       </span>
+      </li>
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-check-circle text-blue-500 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ SERVER DI JAMIN LANCAR
+       </span>
+      </li>
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-lock text-gray-700 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ SCRIPT AMAN
+       </span>
+      </li>
+      <li class="flex items-center justify-center space-x-3">
+       <i class="fas fa-shield-alt text-green-700 icon-micro-animate">
+       </i>
+       <span>
+        ⚡ FULL AMAN
+       </span>
+      </li>
+     </ul>
+    </div>
+   </section>
+   <!-- Call to Action Section -->
+   <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-6 slide-in-left">
+     Ada Kendala Beli Produk? Hubungi Kami Sekarang!
+    </h2>
+    <a class="inline-block px-10 py-4 bg-white text-blue-700 font-semibold rounded-lg shadow-lg animate-shake-cta btn-micro-animate hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-white transition" href="kontak.php" role="button" tabindex="0">
+     Hubungi Kami
+     <i class="fas fa-phone-alt ml-3 icon-micro-animate">
+     </i>
+    </a>
+   </section>
+  </main>
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center select-none">
+   <p>
+    © 2025 Jhnz Produk Hosting. All rights reserved.
+   </p>
+  </footer>
+  <script>
+   // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fade-in animation on scroll for fade-in elements
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            entry.target.classList.add('opacity-100');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    fadeEls.forEach((el) => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+
+    // Parallax effect for hero background image
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxBack = document.querySelector('.parallax__layer--back');
+      if (parallaxBack) {
+        parallaxBack.style.transform = `translateY(${scrolled * 0.3}px) translateZ(-1px) scale(2)`;
+      }
+    });
+  </script>
+ </body>
+</html>

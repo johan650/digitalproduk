@@ -1,0 +1,700 @@
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pembayaran Jhnz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f9fafb;
+      color: #374151;
+      overflow-x: hidden;
+    }
+
+    /* Modal animations */
+    #modal {
+      transition: opacity 0.3s ease, pointer-events 0.3s ease;
+    }
+
+    /* Payment item hover and focus animation */
+    .payment-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    .payment-item:hover,
+    .payment-item:focus {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 20px 25px -5px rgb(99 102 241 / 0.3),
+        0 10px 10px -5px rgb(99 102 241 / 0.2);
+      outline-offset: 4px;
+    }
+
+    /* Button animation */
+    button {
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover,
+    button:focus {
+      box-shadow: 0 8px 15px rgba(99, 102, 241, 0.4);
+      outline-offset: 2px;
+    }
+
+    /* Progress bar animations */
+    @keyframes progressStep1 {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+    @keyframes progressStep2 {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 75%;
+      }
+    }
+    @keyframes progressStep3 {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    @keyframes progressStep4 {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 25%;
+      }
+    }
+    @keyframes progressStep5 {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 0%;
+      }
+    }
+
+    .animate-progress-step1 {
+      animation: progressStep1 2s ease forwards;
+    }
+    .animate-progress-step2 {
+      animation: progressStep2 2s ease forwards;
+    }
+    .animate-progress-step3 {
+      animation: progressStep3 2s ease forwards;
+    }
+    .animate-progress-step4 {
+      animation: progressStep4 2s ease forwards;
+    }
+    .animate-progress-step5 {
+      animation: progressStep5 2s ease forwards;
+    }
+
+    /* Fade-in animation for modal content */
+    .fade-in {
+      animation: fadeInUp 0.4s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll reveal for sections */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+  <header
+    class="bg-white shadow-md sticky top-0 z-40"
+    role="banner"
+    aria-label="Header website metode pembayaran"
+  >
+    <div
+      class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between"
+    >
+      <h1
+        class="text-indigo-600 text-3xl font-extrabold tracking-tight select-none"
+      >
+        Methode Pembayaran
+      </h1>
+      <lottie-player
+        src="https://assets7.lottiefiles.com/packages/lf20_Stt1Rk.json"
+        background="transparent"
+        speed="1"
+        style="width: 48px; height: 48px"
+        loop
+        autoplay
+        aria-label="Animasi ikon pembayaran digital"
+      ></lottie-player>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-6 py-10 space-y-20">
+    <!-- Metode Pembayaran Grid -->
+    <section
+      aria-label="Daftar metode pembayaran"
+      class="space-y-10 reveal"
+      id="payment-section"
+    >
+      <h2
+        class="text-4xl font-extrabold text-center text-gray-900 tracking-tight"
+      >
+        Pilih Metode Pembayaran
+      </h2>
+      <ul
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        role="list"
+      >
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="DANA"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/9b33d449-5f00-4b2c-5c9d-f3edf04c98e2.jpg"
+            alt="Logo DANA berwarna biru dengan ikon dompet digital"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none"
+            >DANA</span
+          >
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="OVO"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/a0f85148-d65b-4544-090e-60c7b26ac59c.jpg"
+            alt="Logo OVO berwarna ungu dengan ikon dompet digital"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none">OVO</span>
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="GOPAY"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/ea73b91b-e942-4a68-56fd-7e5557933c92.jpg"
+            alt="Logo GOPAY berwarna biru muda dengan ikon dompet digital"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none"
+            >GOPAY</span
+          >
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="SHOPEEPAY"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/2c2f2787-942e-41d3-6a64-1b111e80ddde.jpg"
+            alt="Logo SHOPEEPAY berwarna merah dengan ikon dompet digital"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none"
+            >SHOPEEPAY</span
+          >
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="BCA"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/d6830a16-d059-4809-9bfe-848ac98bc5a8.jpg"
+            alt="Logo BCA berwarna biru tua dengan ikon bank"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none">BCA</span>
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="BRI"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/1f6f2881-ecf0-4544-d37e-f3a152a42ce8.jpg"
+            alt="Logo BRI berwarna biru dengan ikon bank"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none">BRI</span>
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="BNI"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/2f8b65ff-08fe-42d4-3d87-46b3b70b4883.jpg"
+            alt="Logo BNI berwarna oranye dengan ikon bank"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none">BNI</span>
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="QRIS"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/3d085c1f-953b-41ff-f72c-a2599e833a7a.jpg"
+            alt="Logo QRIS berwarna hitam putih dengan ikon QR code"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none">QRIS</span>
+        </li>
+        <li
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          data-method="PULSA"
+          class="payment-item bg-white rounded-xl shadow-lg p-8 flex flex-col items-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-indigo-400"
+        >
+          <img
+            src="https://storage.googleapis.com/a1aa/image/0ed5f833-adb9-4189-dca7-edfa42d1f6bf.jpg"
+            alt="Ikon pulsa telepon berwarna hijau dengan simbol sinyal dan ponsel"
+            width="96"
+            height="96"
+            class="mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-xl font-semibold text-gray-800 select-none">PULSA</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Langkah-langkah Pembayaran with Progress Animation -->
+    <section
+      aria-label="Langkah-langkah pembayaran"
+      class="max-w-3xl mx-auto reveal"
+      id="steps-section"
+    >
+      <h2
+        class="text-4xl font-extrabold text-gray-900 mb-10 text-center tracking-tight"
+      >
+        Langkah-langkah Pembayaran
+      </h2>
+      <ol class="relative border-l-4 border-indigo-600 space-y-12">
+        <li class="ml-8 relative">
+          <span
+            class="absolute -left-6 top-0 flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full ring-8 ring-white text-white font-bold text-lg select-none"
+            >1</span
+          >
+          <h3 class="font-semibold text-xl text-gray-900 mb-2">
+            Pilih Metode Pembayaran
+          </h3>
+          <p class="text-gray-700 max-w-prose">
+            Pilih salah satu metode pembayaran yang tersedia sesuai preferensi
+            Anda.
+          </p>
+          <div
+            class="w-full bg-gray-200 rounded-full h-3 mt-4 overflow-hidden shadow-inner"
+            aria-hidden="true"
+          >
+            <div
+              class="bg-indigo-600 h-3 rounded-full animate-progress-step1"
+              style="width: 100%"
+            ></div>
+          </div>
+        </li>
+        <li class="ml-8 relative">
+          <span
+            class="absolute -left-6 top-0 flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full ring-8 ring-white text-white font-bold text-lg select-none"
+            >2</span
+          >
+          <h3 class="font-semibold text-xl text-gray-900 mb-2">
+            Masukkan Detail Pembayaran
+          </h3>
+          <p class="text-gray-700 max-w-prose">
+            Isi informasi yang diperlukan seperti nomor rekening, nomor
+            telepon, atau kode QR.
+          </p>
+          <div
+            class="w-full bg-gray-200 rounded-full h-3 mt-4 overflow-hidden shadow-inner"
+            aria-hidden="true"
+          >
+            <div
+              class="bg-indigo-600 h-3 rounded-full animate-progress-step2"
+              style="width: 75%"
+            ></div>
+          </div>
+        </li>
+        <li class="ml-8 relative">
+          <span
+            class="absolute -left-6 top-0 flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full ring-8 ring-white text-white font-bold text-lg select-none"
+            >3</span
+          >
+          <h3 class="font-semibold text-xl text-gray-900 mb-2">
+            Konfirmasi Pembayaran
+          </h3>
+          <p class="text-gray-700 max-w-prose">
+            Periksa kembali data pembayaran dan konfirmasi untuk melanjutkan
+            proses.
+          </p>
+          <div
+            class="w-full bg-gray-200 rounded-full h-3 mt-4 overflow-hidden shadow-inner"
+            aria-hidden="true"
+          >
+            <div
+              class="bg-indigo-600 h-3 rounded-full animate-progress-step3"
+              style="width: 50%"
+            ></div>
+          </div>
+        </li>
+        <li class="ml-8 relative">
+          <span
+            class="absolute -left-6 top-0 flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full ring-8 ring-white text-white font-bold text-lg select-none"
+            >4</span
+          >
+          <h3 class="font-semibold text-xl text-gray-900 mb-2">
+            Selesaikan Pembayaran
+          </h3>
+          <p class="text-gray-700 max-w-prose">
+            Lakukan pembayaran sesuai instruksi dan tunggu konfirmasi
+            berhasil.
+          </p>
+          <div
+            class="w-full bg-gray-200 rounded-full h-3 mt-4 overflow-hidden shadow-inner"
+            aria-hidden="true"
+          >
+            <div
+              class="bg-indigo-600 h-3 rounded-full animate-progress-step4"
+              style="width: 25%"
+            ></div>
+          </div>
+        </li>
+        <li class="ml-8 relative">
+          <span
+            class="absolute -left-6 top-0 flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full ring-8 ring-white text-white font-bold text-lg select-none"
+            >5</span
+          >
+          <h3 class="font-semibold text-xl text-gray-900 mb-2">
+            Terima Bukti Pembayaran
+          </h3>
+          <p class="text-gray-700 max-w-prose">
+            Simpan bukti pembayaran sebagai referensi dan selesai.
+          </p>
+          <div
+            class="w-full bg-gray-200 rounded-full h-3 mt-4 overflow-hidden shadow-inner"
+            aria-hidden="true"
+          >
+            <div
+              class="bg-indigo-600 h-3 rounded-full animate-progress-step5"
+              style="width: 0%"
+            ></div>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div
+    id="modal"
+    aria-hidden="true"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 pointer-events-none"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <div
+      class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8 relative fade-in"
+      tabindex="-1"
+    >
+      <button
+        id="modalCloseBtn"
+        aria-label="Tutup modal"
+        type="button"
+        class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded"
+      >
+        <i class="fas fa-times fa-lg"></i>
+      </button>
+      <div id="modalContent" class="space-y-6"></div>
+    </div>
+  </div>
+
+  <footer
+    class="bg-white border-t mt-auto py-6 text-center text-gray-500 text-sm select-none"
+  >
+    © 2025 Pembayaran Jhnz. All rights reserved.
+  </footer>
+
+  <script>
+    // Data rekening dan nama rekening per metode pembayaran
+    const paymentData = {
+      DANA: {
+        nomor: "Belum Tersedia",
+        nama: "Belum Tersedia",
+      },
+      OVO: {
+        nomor: "Belum Tersedia",
+        nama: "Belum Tersedia",
+      },
+      GOPAY: {
+        nomor: "Belum Tersedia",
+        nama: "Belum Tersedia",
+      },
+      SHOPEEPAY: {
+        nomor: "Belum Tersedia",
+        nama: "Belum Tersedia",
+      },
+      BCA: {
+        nomor: "Belum Tersedia",
+        nama: "Belum Tersedia",
+      },
+      BRI: {
+        nomor: "Segera Hadir",
+        nama: "Segera Hadir",
+      },
+      BNI: {
+        nomor: "Belum Tersedia",
+        nama: "Belum Tersedia",
+      },
+      QRIS: {
+        nomor: null,
+        nama: null,
+      },
+      PULSA: {
+        nomor: "083173432826",
+        nama: "PT. Axis Net",
+      },
+    };
+
+    // Modal elements
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modalContent");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+    // Open modal with content
+    function openModal(contentHtml) {
+      modalContent.innerHTML = contentHtml;
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      modal.classList.add("opacity-100");
+      modal.setAttribute("aria-hidden", "false");
+      // Focus first focusable element inside modal
+      const focusable = modal.querySelector(
+        "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])"
+      );
+      if (focusable) focusable.focus();
+      // Trap focus inside modal
+      trapFocus(modal);
+    }
+
+    // Close modal
+    function closeModal() {
+      modal.classList.add("opacity-0", "pointer-events-none");
+      modal.classList.remove("opacity-100");
+      modal.setAttribute("aria-hidden", "true");
+      releaseFocusTrap();
+    }
+
+    modalCloseBtn.addEventListener("click", closeModal);
+
+    // Close modal on outside click
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal on ESC key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+        closeModal();
+      }
+    });
+
+    // Trap focus inside modal for accessibility
+    let focusTrapHandler = null;
+    function trapFocus(element) {
+      const focusableElements = element.querySelectorAll(
+        "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex='0'], [contenteditable]"
+      );
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      focusTrapHandler = function (e) {
+        if (e.key !== "Tab") return;
+
+        if (e.shiftKey) {
+          // Shift + Tab
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          // Tab
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+      };
+      document.addEventListener("keydown", focusTrapHandler);
+    }
+    function releaseFocusTrap() {
+      if (focusTrapHandler) {
+        document.removeEventListener("keydown", focusTrapHandler);
+        focusTrapHandler = null;
+      }
+    }
+
+    // Handle payment item clicks
+    document.querySelectorAll(".payment-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const method = item.getAttribute("data-method");
+        if (method === "QRIS") {
+          // QRIS modal content
+          const content = `
+            <h3 id="modalTitle" class="text-2xl font-extrabold text-gray-900 mb-6 select-none">QRIS</h3>
+            <img
+              src="qris.jpg"
+              alt="Gambar QRIS untuk pembayaran dengan QR code berwarna hitam putih"
+              class="w-full rounded-lg shadow-lg mb-8"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="text-gray-700 mb-8 max-w-prose">
+              Scan QR code di atas untuk melakukan pembayaran.
+            </p>
+            <button id="uploadProofBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 transition">
+              Kirim Bukti Transfer
+            </button>
+          `;
+          openModal(content);
+          document
+            .getElementById("uploadProofBtn")
+            .addEventListener("click", () => {
+              window.location.href = "upbuktitransfers.php";
+            });
+        } else {
+          // Other payment modal content
+          const data = paymentData[method];
+          const content = `
+            <h3 id="modalTitle" class="text-2xl font-extrabold text-gray-900 mb-6 select-none">${method}</h3>
+            <div class="space-y-5 mb-8">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-id-card text-indigo-600 text-xl"></i>
+                <span class="font-semibold text-gray-800 text-lg select-none">Nomor Rekening:</span>
+              </div>
+              <p class="text-gray-700 text-lg select-all break-words">${data.nomor}</p>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-user text-indigo-600 text-xl"></i>
+                <span class="font-semibold text-gray-800 text-lg select-none">Nama Rekening:</span>
+              </div>
+              <p class="text-gray-700 text-lg select-all break-words">${data.nama}</p>
+            </div>
+            <button id="uploadProofBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 transition">
+              Kirim Bukti Transfer
+            </button>
+          `;
+          openModal(content);
+          document
+            .getElementById("uploadProofBtn")
+            .addEventListener("click", () => {
+              window.location.href = "upbuktitransfers.php";
+            });
+        }
+      });
+    });
+
+    // Scroll reveal animation for sections
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll(".reveal");
+      const windowHeight = window.innerHeight;
+      reveals.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bukti Transfer Terkirim</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, #d4f1f9 0%, #a0e9fd 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      max-width: 400px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon-check {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5rem auto;
+      animation: bounceIn 1s ease forwards;
+      color: #22c55e;
+      filter: drop-shadow(0 0 5px #22c55e);
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.25rem;
+      color: #16a34a;
+      margin-bottom: 0.5rem;
+      animation: slideInLeft 1s ease forwards;
+    }
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    p.message {
+      font-size: 1.125rem;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      animation: slideInRight 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    p.note {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .btn-contact {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 15px rgba(34, 197, 94, 0.4);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      transition: all 0.3s ease;
+      animation: pulse 2.5s infinite;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .btn-contact i {
+      margin-right: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .btn-contact:hover,
+    .btn-contact:focus {
+      background: linear-gradient(90deg, #16a34a, #22c55e);
+      box-shadow: 0 12px 20px rgba(22, 163, 74, 0.6);
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    .btn-contact:active {
+      transform: translateY(1px);
+      box-shadow: 0 6px 10px rgba(22, 163, 74, 0.4);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      p.message {
+        font-size: 1rem;
+      }
+
+      .btn-contact {
+        font-size: 1rem;
+        padding: 0.65rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="success-title" aria-describedby="success-desc">
+    <svg
+      class="icon-check"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="4" />
+      <path
+        stroke="#22c55e"
+        stroke-width="5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M18 33l10 10 18-22"
+      />
+    </svg>
+    <h1 id="success-title">Berhasil Mengirim Bukti Transfer</h1>
+    <p id="success-desc" class="message">
+      Silahkan tunggu 3-5 menit untuk produk dikirim ke nomor handphone Anda.
+    </p>
+    <p class="note">
+      Jika produk belum dikirim dalam waktu tersebut, silahkan hubungi kami.
+    </p>
+    <a href="wa.me/6283173432826" class="btn-contact" role="button" aria-label="Hubungi Kami">
+      <i class="fas fa-phone-alt" aria-hidden="true"></i> Hubungi Kami
+    </a>
+  </main>
+</body>
+</html>

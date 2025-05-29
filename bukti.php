@@ -1,0 +1,472 @@
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload Bukti Transfer Anda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    main {
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.25);
+      max-width: 480px;
+      width: 100%;
+      padding: 3rem 2.5rem 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    h1 {
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 2.25rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    .input-group {
+      position: relative;
+    }
+    input[type="text"],
+    input[type="tel"],
+    select,
+    input[type="file"] {
+      width: 100%;
+      border: 2.5px solid #cbd5e1;
+      border-radius: 0.75rem;
+      padding: 1.1rem 1.25rem 1.1rem 1.25rem;
+      font-size: 1rem;
+      background: transparent;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      color: #1e293b;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    input[type="file"] {
+      padding: 0.5rem 1.25rem;
+      cursor: pointer;
+    }
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    input[type="file"]:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.4);
+      background: #f0f9ff;
+    }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image:
+        url("data:image/svg+xml,%3csvg fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.25rem 1.25rem;
+      cursor: pointer;
+    }
+    label {
+      position: absolute;
+      top: 50%;
+      left: 1.25rem;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-weight: 500;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      background: white;
+      padding: 0 0.3rem;
+      user-select: none;
+    }
+    input:not(:placeholder-shown) + label,
+    input:focus + label,
+    select:not([value=""]) + label,
+    select:focus + label {
+      top: -0.6rem;
+      left: 1rem;
+      font-size: 0.75rem;
+      color: #3b82f6;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    input[type="file"] + label {
+      display: none;
+    }
+    button[type="submit"] {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 1rem 0;
+      border-radius: 1.25rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(59, 130, 246, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: all 0.3s ease;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      box-shadow: 0 12px 20px rgba(37, 99, 235, 0.6);
+      transform: translateY(-3px);
+    }
+    button[type="submit"]:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 10px rgba(37, 99, 235, 0.5);
+    }
+    button[type="submit"]:disabled {
+      background: #93c5fd;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    /* Pulse animation */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 15px 8px rgba(59, 130, 246, 0.4);
+      }
+    }
+    .pulse {
+      animation: pulse-glow 2.5s infinite;
+    }
+    /* Modal styles */
+    #modalOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 1rem;
+    }
+    #modalOverlay.active {
+      display: flex;
+      animation: modalFadeIn 0.4s ease forwards;
+    }
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    #modalContent {
+      background: white;
+      border-radius: 1.5rem;
+      max-width: 420px;
+      width: 100%;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.3);
+      text-align: center;
+      user-select: none;
+      position: relative;
+    }
+    #modalContent p {
+      font-size: 1.125rem;
+      color: #1e293b;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+    #modalContent button {
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 1rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(37, 99, 235, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    #modalContent button:hover {
+      background: #1e40af;
+      box-shadow: 0 12px 20px rgba(30, 64, 175, 0.7);
+    }
+    #modalContent button:active {
+      background: #1e3aaf;
+      box-shadow: 0 6px 10px rgba(30, 58, 175, 0.6);
+    }
+    /* Responsive */
+    @media (max-width: 480px) {
+      main {
+        padding: 2rem 1.5rem 2rem 1.5rem;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main role="main" aria-labelledby="pageTitle">
+    <h1 id="pageTitle">Masukan Bukti Transfer </h1>
+    <form
+      id="uploadForm"
+      enctype="multipart/form-data"
+      autocomplete="off"
+      novalidate
+      aria-describedby="formInstructions"
+    >
+      <p id="formInstructions" class="sr-only">
+        Semua kolom wajib diisi sebelum mengirim.
+      </p>
+      <div class="input-group">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder=" "
+          required
+          aria-required="true"
+          aria-label="Nama lengkap"
+          autocomplete="name"
+        />
+        <label for="name">Nama</label>
+      </div>
+
+      <div class="input-group">
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder=" "
+          pattern="^\+?[\d\s\-]{7,15}$"
+          required
+          aria-required="true"
+          aria-label="Nomor Handphone"
+          autocomplete="tel"
+        />
+        <label for="phone">Nomor Handphone</label>
+      </div>
+
+      <div class="input-group">
+        <select
+          id="product"
+          name="product"
+          required
+          aria-required="true"
+          aria-label="Pembelian Produk"
+          value=""
+        >
+          <option value="" disabled selected hidden></option>
+          <option value="Produk A">Produk Vps</option>
+          <option value="Produk B">Produk Cpanel&Whm</option>
+          <option value="Produk C">Produk Aws</option>
+          <option value="Produk D">Produk Panel Run</option>
+        </select>
+        <label for="product">Pembelian Produk</label>
+      </div>
+
+      <div class="input-group">
+        <input
+          type="file"
+          id="photo"
+          name="photo"
+          accept="image/*"
+          required
+          aria-required="true"
+          aria-label="Upload Foto"
+          class="pt-2"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="pulse"
+        aria-label="Kirim Formulir"
+        id="submitBtn"
+      >
+        <i class="fas fa-paper-plane fa-lg"></i>
+        <span>Kirim</span>
+      </button>
+    </form>
+  </main>
+
+  <!-- Modal -->
+  <div
+    id="modalOverlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    aria-describedby="modalDesc"
+  >
+    <div id="modalContent" tabindex="-1">
+      <h2 id="modalTitle" class="sr-only">Notifikasi Pesanan</h2>
+      <p id="modalDesc">
+        Pesanan Anda Sedang Kami Proses. Silahkan Tunggu 3-5 Menit. Jika Tidak Ada Respon/Nomor Yang Menghubungi Silahkan Laporkan Ke Customer Service Atau Hubungi Nomor Berikut <strong>+62 831 7343 2826</strong>.
+      </p>
+      <button id="modalOkBtn" type="button" aria-label="Tutup notifikasi dan lanjut">
+        Oke
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Floating label fix for select on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const selects = document.querySelectorAll('select');
+      selects.forEach((select) => {
+        if (select.value !== '') {
+          select.classList.add('has-value');
+        }
+        select.addEventListener('change', () => {
+          if (select.value !== '') {
+            select.classList.add('has-value');
+          } else {
+            select.classList.remove('has-value');
+          }
+        });
+      });
+    });
+
+    const form = document.getElementById('uploadForm');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalOkBtn = document.getElementById('modalOkBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Focus trap for modal
+    function trapFocus(element) {
+      const focusableElements =
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      const firstFocusableElement = element.querySelectorAll(focusableElements)[0];
+      const focusableContent = element.querySelectorAll(focusableElements);
+      const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+      element.addEventListener('keydown', function (e) {
+        let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+        if (!isTabPressed) {
+          return;
+        }
+
+        if (e.shiftKey) {
+          // shift + tab
+          if (document.activeElement === firstFocusableElement) {
+            lastFocusableElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          // tab
+          if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate all fields manually
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Extra validation for file input
+      const photoInput = form.photo;
+      if (photoInput.files.length === 0) {
+        alert('Mohon upload foto terlebih dahulu.');
+        photoInput.focus();
+        return;
+      }
+
+      // Disable submit button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin fa-lg"></i><span> Mengirim...</span>`;
+
+      // Prepare form data
+      const formData = new FormData(form);
+
+      try {
+        // Send data to Formspree (replace with your endpoint)
+        const response = await fetch('https://formspree.io/f/mgebqvyo', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          // Show modal notification
+          modalOverlay.classList.add('active');
+          modalOkBtn.focus();
+        } else {
+          const data = await response.json();
+          if (data.errors) {
+            alert(
+              'Terjadi kesalahan saat mengirim: ' +
+                data.errors.map((err) => err.message).join(', ')
+            );
+          } else {
+            alert('Terjadi kesalahan saat mengirim data.');
+          }
+        }
+      } catch (error) {
+        alert('Gagal mengirim data. Silakan coba lagi nanti.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fas fa-paper-plane fa-lg"></i><span> Kirim</span>`;
+      }
+    });
+
+    modalOkBtn.addEventListener('click', () => {
+      modalOverlay.classList.remove('active');
+      // Redirect to another page after clicking OK
+      window.location.href = 'https://example.com/thank-you';
+    });
+
+    // Trap focus inside modal when active
+    modalOverlay.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        // Optional: close modal on Escape key
+        modalOverlay.classList.remove('active');
+        submitBtn.focus();
+      }
+    });
+
+    trapFocus(modalOverlay);
+  </script>
+</body>
+</html>
